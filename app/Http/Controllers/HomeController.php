@@ -36,10 +36,17 @@ class HomeController extends Controller
             : view('public.driver-order', compact('driverOrders'));
     }
 
+    public function driverHistory($driver_id, Request $request)
+    {
+        return $request->ajax() || $request->wantsJson()
+            ? $this->apiResponseSuccess($this->orderRepository->driverHistory($driver_id, $request))
+            : view('public.driver-history', $this->orderRepository->driverHistory($driver_id, $request));
+    }
+
     public function storeHistory($store_id, Request $request)
     {
         return $request->ajax() || $request->wantsJson()
             ? $this->apiResponseSuccess($this->orderRepository->storeHistory($store_id, $request))
-            : view('public.car-list', $this->orderRepository->storeHistory($store_id, $request));
+            : view('public.store-history', $this->orderRepository->storeHistory($store_id, $request));
     }
 }

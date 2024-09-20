@@ -43,6 +43,7 @@ Route::middleware(['role:driver'])->group(function () {
     Route::get('/driver-order/{driver_id}', [HomeController::class, 'driverOrder'])->name('home.driverOrder');
     Route::get('/driver-order/{order_id}/edit', [OrderController::class, 'driverOrderEdit'])->name('home.driverOrderEdit');
     Route::put('/driver-order/{order_id}', [OrderController::class, 'updateDriver'])->name('home.updateDriver');
+    Route::get('driver-history/{driver_id}', [HomeController::class, 'driverHistory'])->name('home.driverHistory');
 });
 
 Route::prefix('admin')->group(function () {});
